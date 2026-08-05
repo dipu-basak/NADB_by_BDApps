@@ -1,0 +1,12 @@
+rules_version = '2';
+
+// TEST MODE ONLY — anyone can read and write notes.
+// Fine for learning; replace with proper auth-based rules before shipping.
+// To deploy: firebase deploy --only firestore:rules
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /notes/{document} {
+      allow read, write: if true;
+    }
+  }
+}
